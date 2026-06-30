@@ -5,7 +5,7 @@ import type { SVGProps } from 'react';
 const experiences = [
   {
     number: '01',
-    date: 'June 2025',
+    date: 'Jun -Sep 2025',
     company: 'Digit Innovation Hub',
     role: 'Frontend Developer Volunteer',
     description:
@@ -17,7 +17,7 @@ const experiences = [
   },
   {
     number: '02',
-    date: 'Sep 2025',
+    date: 'Sep 2025 - Present',
     company: 'Doctors',
     role: 'Frontend Developer',
     description:

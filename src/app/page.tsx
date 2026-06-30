@@ -1,5 +1,6 @@
 import FluidCursor from "@/src/components/FluidCursor";
 import HeroSection from "@/src/components/HeroSection";
+import Projects from "@/src/components/Projects";
 import ThemeSwitch from "@/src/components/ThemeSwitch";
 import WorkTimeLineClient from "@/src/components/WorkTimeLineClient";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <main className="relative z-10 flex w-full flex-1 flex-col items-center overflow-hidden">
         <HeroSection />
         <WorkTimeLineClient />
+        <Projects />
       </main>
     </div>
   );
