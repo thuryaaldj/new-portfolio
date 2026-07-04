@@ -1,6 +1,7 @@
 import FluidCursor from "@/src/components/FluidCursor";
 import HeroSection from "@/src/components/HeroSection";
 import Projects from "@/src/components/Projects";
+import SkillsSnake from "@/src/components/SkillsSnake";
 import ThemeSwitch from "@/src/components/ThemeSwitch";
 import WorkTimeLineClient from "@/src/components/WorkTimeLineClient";
 
@@ -16,6 +17,7 @@ export default function Home() {
         <HeroSection />
         <WorkTimeLineClient />
         <Projects />
+        <SkillsSnake />
       </main>
     </div>
   );
