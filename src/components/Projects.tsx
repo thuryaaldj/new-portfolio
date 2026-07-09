@@ -9,7 +9,7 @@ const projects = [
       'A user-friendly app for booking bus seats with seat selection and confirmation.',
     accent: '#25BDF2',
     panels: ['Seat selection', 'Booking details', 'Confirmation'],
-    live: 'https://bus-booking-kyzdimz59-thuraya-aldjs-projects.vercel.app/',
+    live: 'https://bus-booking-app-pifyv04ke-thuraya-aldjs-projects.vercel.app/',
     github: 'https://github.com/thuryaaldj/Bus-Booking-App',
   },
   {
