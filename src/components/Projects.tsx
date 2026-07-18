@@ -156,7 +156,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative isolate w-full max-w-7xl px-8 py-24 md:px-20">
+    <section id="projects" ref={sectionRef} className="relative isolate w-full max-w-7xl px-8 py-24 md:px-20">
       <svg
         className="pointer-events-none absolute inset-x-0 -top-24 z-0 hidden h-[calc(100%+6rem)] w-full md:block"
         viewBox="0 0 1000 4320"

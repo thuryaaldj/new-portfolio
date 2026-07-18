@@ -31,7 +31,7 @@ const experiences = [
 
 export default function CustomizedTimeline() {
   return (
-    <section className="w-full max-w-7xl px-8 py-24 md:px-20">
+    <section id="experience" className="w-full max-w-7xl px-8 py-24 md:px-20">
       <div className="mx-auto mb-14 max-w-3xl text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-foreground/50">
           Experience

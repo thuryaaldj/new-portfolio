@@ -1,10 +1,12 @@
 import Image from "next/image";
 import heroImage from "@/src/app/hero.png";
+import { MobileSectionNav } from "@/src/components/FloatingSectionNav";
 
 export default function HeroSection() {
   return (
-    <section className="grid w-full max-w-7xl grid-cols-1 items-center gap-12 overflow-hidden px-8 py-32 md:grid-cols-2 md:px-20">
+    <section id="home" className="grid w-full max-w-7xl grid-cols-1 items-center gap-12 overflow-hidden px-8 py-24 md:grid-cols-2 md:px-20 md:py-32">
       <div className="relative z-10 space-y-6 text-center md:text-left">
+        <MobileSectionNav />
         <p className="text-base font-semibold tracking-[0.3em] text-foreground/60">
           Hi i&apos;m
         </p>

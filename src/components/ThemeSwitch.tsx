@@ -29,7 +29,7 @@ const setStoredTheme = (theme: Theme) => {
   window.dispatchEvent(new Event(themeChangeEvent));
 };
 
-export default function ThemeSwitch() {
+export default function ThemeSwitch({ compact = false }: { compact?: boolean }) {
   const theme = useSyncExternalStore(subscribeToTheme, getSavedTheme, () => 'light');
 
   useEffect(() => {
@@ -44,20 +44,22 @@ export default function ThemeSwitch() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="grid size-11 place-items-center rounded-full border border-foreground/20 bg-background/80 text-foreground shadow-sm backdrop-blur transition hover:scale-105 hover:border-foreground/40"
+      className={`grid place-items-center rounded-full border border-foreground/20 bg-background/80 text-foreground shadow-sm backdrop-blur transition hover:scale-105 hover:border-foreground/40 ${
+        compact ? 'size-10 sm:size-11' : 'size-11'
+      }`}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
       suppressHydrationWarning
     >
-      {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+      {theme === 'light' ? <MoonIcon compact={compact} /> : <SunIcon compact={compact} />}
     </button>
   );
 }
 
-function SunIcon() {
+function SunIcon({ compact = false }: { compact?: boolean }) {
   return (
     <svg
       aria-hidden="true"
-      className="size-5"
+      className={compact ? 'size-4 sm:size-5' : 'size-5'}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -72,11 +74,11 @@ function SunIcon() {
   );
 }
 
-function MoonIcon() {
+function MoonIcon({ compact = false }: { compact?: boolean }) {
   return (
     <svg
       aria-hidden="true"
-      className="size-5"
+      className={compact ? 'size-4 sm:size-5' : 'size-5'}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"

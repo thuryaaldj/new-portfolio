@@ -989,7 +989,7 @@ export default function SkillsNodeGalaxy() {
   };
 
   return (
-    <section ref={sectionRef} className="w-full max-w-7xl px-4 py-16 sm:px-8 md:px-2">
+    <section id="skills" ref={sectionRef} className="w-full max-w-7xl px-4 py-16 sm:px-8 md:px-2">
       <div className="mx-auto mb-8 max-w-3xl text-center">
         <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
           Skills
