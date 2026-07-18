@@ -138,7 +138,7 @@ export function DesktopSectionNav() {
   return (
     <nav
       aria-label="Section navigation"
-      className="fixed right-6 top-6 pt-35 z-20 hidden flex-col items-center gap-3 md:flex"
+      className="fixed right-6 top-6 pt-42 z-20 hidden flex-col items-center gap-3 md:flex"
     >
       <SectionNavCircles layout="vertical" />
     </nav>
