@@ -1,3 +1,4 @@
+import CertificationsAndLanguages from "@/src/components/CertificationsAndLanguages";
 import FluidCursor from "@/src/components/FluidCursor";
 import HeroSection from "@/src/components/HeroSection";
 import Projects from "@/src/components/Projects";
@@ -17,6 +18,7 @@ export default function Home() {
           <WorkTimeLineClient />
           <Projects />
           <SkillsSnake />
+          <CertificationsAndLanguages />
         </main>
       </div>
     </SectionNavProvider>

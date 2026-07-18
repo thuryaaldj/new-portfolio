@@ -25,11 +25,12 @@ type SectionNavContextValue = {
   scrollToSection: (sectionId: string) => void;
 };
 
-const sectionIds = ['home', 'experience', 'projects', 'skills'] as const;
+const sectionIds = ['home', 'experience', 'credentials', 'projects', 'skills'] as const;
 
 const navItems: NavItem[] = [
   { id: 'home', label: 'Home', icon: HomeIcon },
   { id: 'experience', label: 'Experience', icon: BriefcaseIcon },
+  { id: 'credentials', label: 'Certifications', icon: CertificateIcon },
   { id: 'projects', label: 'Projects', icon: LayersIcon },
   { id: 'skills', label: 'Skills', icon: CodeBracketIcon },
 ];
@@ -174,38 +175,74 @@ function SectionNavCircles({ layout }: { layout: 'horizontal' | 'vertical' }) {
           : 'flex flex-col items-center gap-3'
       }
     >
-      <ThemeSwitch compact={isHorizontal} />
+      <NavItemWithLabel label="Theme" layout={layout}>
+        <ThemeSwitch compact={isHorizontal} />
+      </NavItemWithLabel>
 
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive = activeSection === item.id;
 
         return (
-          <button
-            key={item.id}
-            type="button"
-            aria-label={`Go to ${item.label}`}
-            aria-current={isActive ? 'true' : undefined}
-            onClick={() => scrollToSection(item.id)}
-            className={`grid ${buttonSize} place-items-center rounded-full border bg-background/80 text-foreground shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 ${
-              isActive
-                ? 'scale-105 border-teal-500/70 shadow-[0_0_18px_rgba(20,184,166,0.25)]'
-                : 'border-foreground/20 hover:border-foreground/40'
-            }`}
-          >
-            <Icon className={iconSize} />
-          </button>
+          <NavItemWithLabel key={item.id} label={item.label} layout={layout}>
+            <button
+              type="button"
+              aria-label={`Go to ${item.label}`}
+              aria-current={isActive ? 'true' : undefined}
+              onClick={() => scrollToSection(item.id)}
+              className={`grid ${buttonSize} place-items-center rounded-full border bg-background/80 text-foreground shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 ${
+                isActive
+                  ? 'scale-105 border-teal-500/70 shadow-[0_0_18px_rgba(20,184,166,0.25)]'
+                  : 'border-foreground/20 hover:border-foreground/40'
+              }`}
+            >
+              <Icon className={iconSize} />
+            </button>
+          </NavItemWithLabel>
         );
       })}
 
-      <button
-        type="button"
-        aria-label="Open contact"
-        onClick={openContact}
-        className={`grid ${buttonSize} place-items-center rounded-full border border-foreground/20 bg-background/80 text-foreground shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:border-foreground/40`}
+      <NavItemWithLabel label="Contact" layout={layout}>
+        <button
+          type="button"
+          aria-label="Open contact"
+          onClick={openContact}
+          className={`grid ${buttonSize} place-items-center rounded-full border border-foreground/20 bg-background/80 text-foreground shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:border-foreground/40`}
+        >
+          <MailIcon className={iconSize} />
+        </button>
+      </NavItemWithLabel>
+    </div>
+  );
+}
+
+function NavItemWithLabel({
+  label,
+  layout,
+  children,
+}: {
+  label: string;
+  layout: 'horizontal' | 'vertical';
+  children: ReactNode;
+}) {
+  const isHorizontal = layout === 'horizontal';
+
+  return (
+    <div
+      className={`group relative flex ${
+        isHorizontal ? 'flex-col items-center' : 'items-center justify-end'
+      }`}
+    >
+      <span
+        className={`pointer-events-none absolute z-30 whitespace-nowrap rounded-full border border-foreground/15 bg-background/95 px-3 py-1 text-xs font-semibold text-foreground shadow-sm backdrop-blur transition-all duration-200 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 ${
+          isHorizontal
+            ? 'top-full mt-2 translate-y-1 group-hover:translate-y-0 group-focus-within:translate-y-0'
+            : 'right-full mr-3 translate-x-1 group-hover:translate-x-0 group-focus-within:translate-x-0'
+        }`}
       >
-        <MailIcon className={iconSize} />
-      </button>
+        {label}
+      </span>
+      {children}
     </div>
   );
 }
@@ -324,6 +361,16 @@ function CodeBracketIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" {...props}>
       <path strokeLinecap="round" strokeLinejoin="round" d="m8 9-3 3 3 3m8-6 3 3-3 3M14 5l-4 14" />
+    </svg>
+  );
+}
+
+function CertificateIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M7 4h10v12H7V4Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 8h6M9 12h4" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 16v4l-2-1-2 1v-4" />
     </svg>
   );
 }
