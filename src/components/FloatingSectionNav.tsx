@@ -35,13 +35,13 @@ const navItems: NavItem[] = [
 ];
 
 const contactDetails = {
-  email: 'your.email@example.com',
-  phoneDisplay: '+963 000 000 000',
-  phoneHref: '+963000000000',
-  linkedin: 'https://www.linkedin.com/in/your-profile',
-  linkedinLabel: 'linkedin.com/in/your-profile',
-  github: 'https://github.com/your-username',
-  githubLabel: 'github.com/your-username',
+  email: 'thuryaamen@gmail.com',
+  phoneDisplay: '+963 964 718 061',
+  phoneHref: '+963964718061',
+  linkedin: 'https://www.linkedin.com/in/thuraya-aldj-0a2615331/',
+  linkedinLabel: 'https://www.linkedin.com/in/thuraya-aldj-0a2615331/',
+  github: 'https://github.com/thuryaaldj',
+  githubLabel: 'https://github.com/thuryaaldj',
 } as const;
 
 const SectionNavContext = createContext<SectionNavContextValue | null>(null);
@@ -138,7 +138,7 @@ export function DesktopSectionNav() {
   return (
     <nav
       aria-label="Section navigation"
-      className="fixed right-6 top-6 z-20 hidden flex-col items-center gap-3 md:flex"
+      className="fixed right-6 top-6 pt-35 z-20 hidden flex-col items-center gap-3 md:flex"
     >
       <SectionNavCircles layout="vertical" />
     </nav>
