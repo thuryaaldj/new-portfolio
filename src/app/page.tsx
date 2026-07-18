@@ -4,12 +4,6 @@ import Projects from "@/src/components/Projects";
 import SkillsSnake from "@/src/components/SkillsSnake";
 import FloatingSectionNav, { SectionNavProvider } from "@/src/components/FloatingSectionNav";
 import WorkTimeLineClient from "@/src/components/WorkTimeLineClient";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Thuraya Aldj Portfolio",
-  description: "Frontend Developer ",
-};
 
 export default function Home() {
   return (
