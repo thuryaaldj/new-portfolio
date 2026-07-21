@@ -83,7 +83,7 @@ const projects: Project[] = [
       'An educational and entertaining word game with a simple interface, well-organized logic, and many useful features.',
     accent: '#DB2777',
     panels: ['Word logic', 'Game state', 'Score flow'],
-    live: 'https://example.com',
+    live: 'https://hangman-word-game-seven.vercel.app/',
     github: 'https://github.com/thuryaaldj/Hangman',
   },
 ];
