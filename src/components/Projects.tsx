@@ -23,7 +23,7 @@ const projects: Project[] = [
     accent: '#008C78',
     panels: ['Your Bookings', 'Find A Doctors', 'Medical Blogs'],
     live: 'https://portainer.doctors.sy/',
-    // github: 'https://github.com',
+    github: 'https://github.com',
     // images: [busBooking1, busBooking2, busBooking3],
   },
   {
