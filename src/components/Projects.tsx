@@ -5,6 +5,9 @@ import { useEffect, useRef, useState, type SVGProps } from 'react';
 import busBooking1 from '@/src/assets/images/bus-booking-1.png';
 import busBooking2 from '@/src/assets/images/bus-booking-2.png';
 import busBooking3 from '@/src/assets/images/bus-booking-3.png';
+import gsapProject1 from '@/src/assets/images/gsap-project-1.png';
+import gsapProject2 from '@/src/assets/images/gsap-project-2.png';
+import gsapProject3 from '@/src/assets/images/gsap-project-3.png';
 
 type Project = {
   title: string;
@@ -44,6 +47,8 @@ const projects: Project[] = [
     panels: ['Animated hero', 'Smooth motion', 'Modern UI'],
     live: 'https://animated-awwwards.vercel.app/',
     github: 'https://github.com/thuryaaldj/animated-awwwards',
+    images: [gsapProject1,gsapProject2,gsapProject3],
+
   },
   {
     title: 'Personal Portfolio',
