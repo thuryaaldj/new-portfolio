@@ -97,7 +97,7 @@ export default function CertificationsAndLanguages() {
               <article
                 key={certification.title}
                 className="group relative overflow-hidden rounded-[1.5rem] border border-foreground/10 bg-background/85 p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-foreground/25"
-                style={{
+                style={{ 
                   boxShadow: `0 18px 36px ${certification.accent}22`,
                 }}
               >

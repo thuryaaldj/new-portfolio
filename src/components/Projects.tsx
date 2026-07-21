@@ -1,22 +1,46 @@
 'use client';
 
+import Image, { type StaticImageData } from 'next/image';
 import { useEffect, useRef, useState, type SVGProps } from 'react';
+import busBooking1 from '@/src/assets/images/bus-booking-1.png';
+import busBooking2 from '@/src/assets/images/bus-booking-2.png';
+import busBooking3 from '@/src/assets/images/bus-booking-3.png';
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  accent: string;
+  panels: [string, string, string];
+  live: string;
+  github: string;
+  images?: [StaticImageData, StaticImageData, StaticImageData];
+};
+
+const projects: Project[] = [
+  {
+    title: 'Doctors App',
+    description:'The best specialized and advanced medical platform in the Middle East.',
+    accent: '#008C78',
+    panels: ['Your Bookings', 'Find A Doctors', 'Medical Blogs'],
+    live: 'https://portainer.doctors.sy/',
+    // github: 'https://github.com',
+    // images: [busBooking1, busBooking2, busBooking3],
+  },
   {
     title: 'Bus Booking App',
     description:
       'A user-friendly app for booking bus seats with seat selection and confirmation.',
-    accent: '#25BDF2',
+    accent: '#7C3AED',
     panels: ['Seat selection', 'Booking details', 'Confirmation'],
     live: 'https://bus-booking-app-pifyv04ke-thuraya-aldjs-projects.vercel.app/',
     github: 'https://github.com/thuryaaldj/Bus-Booking-App',
+    images: [busBooking1, busBooking2, busBooking3],
   },
   {
-    title: 'Award-Winning Animated Website',
+    title: 'Animated Website',
     description:
       'A responsive web app for award-winning featuring a clean UI, smooth animations, and modern design.',
-    accent: '#008C78',
+    accent: '#F97316',
     panels: ['Animated hero', 'Smooth motion', 'Modern UI'],
     live: 'https://animated-awwwards.vercel.app/',
     github: 'https://github.com/thuryaaldj/animated-awwwards',
@@ -25,20 +49,20 @@ const projects = [
     title: 'Personal Portfolio',
     description:
       'A responsive personal portfolio built from a Figma design using React and Tailwind.',
-    accent: '#7C3AED',
+    accent: '#25BDF2',
     panels: ['Figma layout', 'React sections', 'Tailwind UI'],
     live: 'https://thuraya-portfolio.vercel.app/',
     github: 'https://github.com/thuryaaldj/Thuraya-s-portfolio',
   },
-  {
-    title: 'Admin Dashboard',
-    description:
-      'A responsive and user-friendly admin dashboard designed with a clean UI, interactive charts, and dynamic tables.',
-    accent: '#F97316',
-    panels: ['Charts', 'Dynamic tables', 'Admin tools'],
-    live: 'https://example.com',
-    github: 'https://github.com',
-  },
+  // {
+  //   title: 'Admin Dashboard',
+  //   description:
+  //     'A responsive and user-friendly admin dashboard designed with a clean UI, interactive charts, and dynamic tables.',
+  //   accent: '#F97316',
+  //   panels: ['Charts', 'Dynamic tables', 'Admin tools'],
+  //   live: 'https://example.com',
+  //   github: 'https://github.com',
+  // },
   {
     title: 'Fruit & Vegetable Store',
     description:
@@ -224,7 +248,7 @@ function ProjectDetails({
   project,
   index,
 }: {
-  project: (typeof projects)[number];
+  project: Project;
   index: number;
 }) {
   return (
@@ -280,7 +304,7 @@ function ProjectMockup({
   project,
   index,
 }: {
-  project: (typeof projects)[number];
+  project: Project;
   index: number;
 }) {
   return (
@@ -296,27 +320,51 @@ function ProjectMockup({
           style={{ backgroundColor: project.accent }}
           aria-hidden="true"
         />
-        <div className="relative mt-12 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
-          <ScreenPanel
-            label={project.panels[0]}
-            accent={project.accent}
-            className="min-h-52 rotate-[-3deg]"
-          />
-          <div className="grid gap-4 pt-8">
-            <ScreenPanel
-              label={project.panels[1]}
-              accent={project.accent}
-              className="min-h-32 rotate-[4deg]"
-              compact
+        {project.images ? (
+          <div className="relative mt-12 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
+            <ProjectImagePanel
+              src={project.images[0]}
+              alt={`${project.title} - ${project.panels[0]}`}
+              className="min-h-52 rotate-[-3deg]"
             />
-            <ScreenPanel
-              label={project.panels[2]}
-              accent={project.accent}
-              className="min-h-28 rotate-[-2deg]"
-              compact
-            />
+            <div className="grid gap-4 pt-8">
+              <ProjectImagePanel
+                src={project.images[1]}
+                alt={`${project.title} - ${project.panels[1]}`}
+                className="min-h-32 rotate-[4deg]"
+                compact
+              />
+              <ProjectImagePanel
+                src={project.images[2]}
+                alt={`${project.title} - ${project.panels[2]}`}
+                className="min-h-28 rotate-[-2deg]"
+                compact
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="relative mt-12 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
+            <ScreenPanel
+              label={project.panels[0]}
+              accent={project.accent}
+              className="min-h-52 rotate-[-3deg]"
+            />
+            <div className="grid gap-4 pt-8">
+              <ScreenPanel
+                label={project.panels[1]}
+                accent={project.accent}
+                className="min-h-32 rotate-[4deg]"
+                compact
+              />
+              <ScreenPanel
+                label={project.panels[2]}
+                accent={project.accent}
+                className="min-h-28 rotate-[-2deg]"
+                compact
+              />
+            </div>
+          </div>
+        )}
         <span
           className={`absolute bottom-6 size-20 rounded-full opacity-15 blur-xl ${
             index % 2 === 0 ? 'left-8' : 'right-8'
@@ -325,6 +373,30 @@ function ProjectMockup({
           aria-hidden="true"
         />
       </div>
+    </div>
+  );
+}
+
+function ProjectImagePanel({
+  src,
+  alt,
+  compact = false,
+  className = '',
+}: {
+  src: StaticImageData;
+  alt: string;
+  compact?: boolean;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`group overflow-hidden rounded-[1.35rem] border border-foreground/10 bg-background/95 shadow-[0_18px_45px_rgba(15,23,42,0.14)] backdrop-blur transition duration-500 hover:-translate-y-1 ${className}`}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        className={`w-full object-cover object-top transition duration-500 ease-out group-hover:scale-110 motion-reduce:transform-none ${compact ? 'h-32 sm:h-36' : 'h-52 sm:h-56'}`}
+      />
     </div>
   );
 }
